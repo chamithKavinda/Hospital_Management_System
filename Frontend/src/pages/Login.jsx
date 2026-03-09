@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ErrorAlert from '../components/ErrorAlert';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import MedicalParticles from '../components/MedicalParticles';
 
 const Login = () => {
@@ -8,6 +8,8 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
+
+    const navigate = useNavigate();
 
     const handleLogin = (e) => {
         e.preventDefault(); 
@@ -30,6 +32,7 @@ const Login = () => {
         }
 
         setErrorMessage('');
+        navigate('/dashboard');
         alert(`Successfully logged in as ${email}`);
     };
 

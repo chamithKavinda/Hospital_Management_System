@@ -19,27 +19,54 @@ export const Field = ({ label, type = "text", placeholder }) => (
   );
   
   // ── FormCard ──────────────────────────────────────────────────────────────────
-  export const FormCard = ({ title, children }) => (
+  export const FormCard = ({ title, children, onSubmit }) => (
     <div style={{
-      background: "#fff", borderRadius: 14, padding: "32px 36px",
-      boxShadow: "0 2px 16px rgba(0,0,0,.07)", maxWidth: 680,
+      background: "#fff",
+      borderRadius: 14,
+      padding: "32px 36px",
+      boxShadow: "0 2px 16px rgba(0,0,0,.07)",
+      width: "100%",
+      maxWidth: "100%"
     }}>
       <h2 style={{
-        margin: "0 0 24px", fontSize: 20, fontWeight: 700, color: "#1e3a8a",
-        borderBottom: "2px solid #dbeafe", paddingBottom: 14,
+        margin: "0 0 24px",
+        fontSize: 20,
+        fontWeight: 700,
+        color: "#1e3a8a",
+        borderBottom: "2px solid #dbeafe",
+        paddingBottom: 14
       }}>
         {title}
       </h2>
+  
       {children}
-      <button style={{
-        marginTop: 8, background: "linear-gradient(135deg,#1e40af,#2563eb)", color: "#fff",
-        border: "none", borderRadius: 9, padding: "11px 32px", fontSize: 14, fontWeight: 700,
-        cursor: "pointer", letterSpacing: ".3px", boxShadow: "0 4px 12px rgba(37,99,235,.35)",
-      }}>
-        Submit
-      </button>
+  
+      {/* Show button ONLY if onSubmit exists */}
+      {onSubmit && (
+        <button
+          onClick={onSubmit}
+          style={{
+            marginTop: 8,
+            background: "linear-gradient(135deg,#1e40af,#2563eb)",
+            color: "#fff",
+            border: "none",
+            borderRadius: 9,
+            padding: "11px 32px",
+            fontSize: 14,
+            fontWeight: 700,
+            cursor: "pointer",
+            letterSpacing: ".3px",
+            boxShadow: "0 4px 12px rgba(37,99,235,.35)"
+          }}
+        >
+          Submit
+        </button>
+      )}
+  
     </div>
   );
+  
+  
   
   // ── Badge ─────────────────────────────────────────────────────────────────────
   export const Badge = ({ color, label }) => (
